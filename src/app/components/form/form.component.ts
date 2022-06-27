@@ -43,7 +43,6 @@ export class FormComponent implements OnInit {
 
   constructor(private router: Router, private pkServ: PokemonapiService, private activeRoute: ActivatedRoute) { 
     this.activeRoute.params.subscribe(params => {
-      console.log(params);
       if(params['id']){
         this.getPokemon(params['id']);
         this.title = 'Modificar';
