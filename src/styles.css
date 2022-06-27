@@ -69,6 +69,14 @@ body{
     font-size: 1.5em;
 }
 
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+	cursor: not-allowed;
+	filter: alpha(opacity=65);
+	opacity: .65;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
 .form-control {
 	display: block;
 	width: 100%;

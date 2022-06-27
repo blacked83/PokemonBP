@@ -11,6 +11,8 @@ import { PokemonapiService, DeletemodalService } from './services';
 import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
 import { FormComponent } from './components/form/form.component';
 
+import { ReactiveFormsModule } from "@angular/forms";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,8 @@ import { FormComponent } from './components/form/form.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     PokemonapiService, 

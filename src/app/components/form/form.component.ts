@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PokemonapiService } from '../../services';
 import { ActivatedRoute, Params} from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -11,16 +12,6 @@ import { ActivatedRoute, Params} from '@angular/router';
 export class FormComponent implements OnInit {
 
   title: string = 'Crear';
-  pokemon = {
-    id: 0,
-    name: '',
-    image: '',
-    type: '',
-    attack: 0,
-    defense: 0,
-    hp: 0,
-    idAuthor: 1
-  };
   typeList: string[] = [
     "Acero", 
     "Agua",
@@ -41,12 +32,25 @@ export class FormComponent implements OnInit {
     "Volador"    
   ];
 
-  constructor(private router: Router, private pkServ: PokemonapiService, private activeRoute: ActivatedRoute) { 
+  formPK: FormGroup;
+
+  constructor(private router: Router, private pkServ: PokemonapiService, private activeRoute: ActivatedRoute, public fb: FormBuilder) { 
     this.activeRoute.params.subscribe(params => {
       if(params['id']){
         this.getPokemon(params['id']);
         this.title = 'Modificar';
       }
+    });
+
+    this.formPK = this.fb.group({
+      id: [0],
+      name: ['', Validators.required],
+      image: ['', Validators.required],
+      type: ['', Validators.required],
+      attack: [0, Validators.min(1)],
+      defense: [0, Validators.min(1)],
+      hp: [0, Validators.min(1)],
+      idAuthor: [1]
     });
   }
 
@@ -58,13 +62,12 @@ export class FormComponent implements OnInit {
   }
 
   save(){
-    if(this.pokemon.name.length > 0 && this.pokemon.image.length > 0 && this.pokemon.type.length > 0 && this.pokemon.attack > 0 && this.pokemon.defense > 0 && this.pokemon.hp > 0)
-      if(this.pokemon.id == 0){
-        this.pkServ.createPokemon(this.pokemon).subscribe(res => {
+      if(this.formPK.get('id')?.value == 0){
+        this.pkServ.createPokemon(this.formPK.value).subscribe(res => {
           this.cancel();
         });
       } else {
-        this.pkServ.updatePokemon(this.pokemon).subscribe(res => {
+        this.pkServ.updatePokemon(this.formPK.value).subscribe(res => {
           this.cancel();
         });
       } 
@@ -72,14 +75,14 @@ export class FormComponent implements OnInit {
 
   getPokemon(id: number){
     this.pkServ.getPokemon(id).subscribe(res => {
-      this.pokemon.id = res.id;
-      this.pokemon.name = res.name;
-      this.pokemon.image = res.image;
-      this.pokemon.attack = res.attack;
-      this.pokemon.defense = res.defense;
-      this.pokemon.hp = res.hp;
-      this.pokemon.type = res.type;
-      this.pokemon.idAuthor = res.id_author;
+      this.formPK.get('id')?.setValue(res.id);
+      this.formPK.get('name')?.setValue(res.name);
+      this.formPK.get('image')?.setValue(res.image);
+      this.formPK.get('attack')?.setValue(res.attack);
+      this.formPK.get('defense')?.setValue(res.defense);
+      this.formPK.get('hp')?.setValue(res.hp);
+      this.formPK.get('type')?.setValue(res.type);
+      this.formPK.get('idAuthor')?.setValue(res.id_author);
     });
   }
 }
