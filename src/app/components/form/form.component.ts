@@ -47,7 +47,6 @@ export class FormComponent implements OnInit {
         this.getPokemon(params['id']);
         this.title = 'Modificar';
       }
-        
     });
   }
 
