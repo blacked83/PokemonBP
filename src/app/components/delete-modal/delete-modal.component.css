@@ -1,0 +1,38 @@
+.modal{
+    background-color: rgba(0,0,0,.8);
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content{
+    background-color:white;
+    width:600px;
+    padding: 10px 20px;
+    margin: 20% auto;
+    position: relative;
+    border-radius: 10px;
+}
+
+.close{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
+}
+
+div#buttons{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.btn{
+    margin-right: 10px;
+}

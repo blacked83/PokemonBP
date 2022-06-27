@@ -1,0 +1,40 @@
+
+div#search{
+    margin: 25px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+div#search div:first-child{
+    width: 75%;
+}
+
+div#list table{
+    width: 100%;
+    caption-side: bottom;
+    border-collapse: collapse;
+}
+
+div#list table thead{
+    background-color: red;
+    color: white;
+    height: 40px;
+}
+
+div#list table tbody tr{
+    padding: 10px;
+}
+
+div#list table tbody tr td{
+    text-align: center;
+    padding: 20px;
+}
+
+.pokemonIMG{
+    height: 50px;
+}
+
+.accion img{
+    cursor: pointer;
+    height: 35px;
+}

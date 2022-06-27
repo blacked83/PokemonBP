@@ -1,0 +1,25 @@
+div#header{
+    width: 100%;
+    height: 75px;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+
+div#brand{
+    margin-left: 10px;
+}
+
+div#powerby{
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+img#logo{
+    height: 45px;
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
+}

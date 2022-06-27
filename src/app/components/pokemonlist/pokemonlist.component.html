@@ -1,0 +1,37 @@
+<div class="container">
+    <h3>Listado de Pokemon</h3>
+    <div id="search">
+        <div>
+            <input type="text" name="search" (keyup)="pokemonFilter($event)" class="form-control" placeholder="&#8981; Buscar">
+        </div>
+        <div>
+            <button type="button" class="btn"><span>+</span> Nuevo</button>
+        </div>
+    </div>
+    <div id="list">
+        <table class="table table-striped">
+            <thead>
+                <th>Nombre</th>
+                <th>Imagen</th>
+                <th>Ataque</th>
+                <th>Defensa</th>
+                <th>Acciones</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pokemon of data">
+                    <th>{{ pokemon.name }}</th>
+                    <td>
+                        <img src="{{ pokemon.image }}" class="pokemonIMG">
+                    </td>
+                    <td>{{ pokemon.attack }}</td>
+                    <td>{{ pokemon.defense }}</td>
+                    <td class="accion">
+                        <img src="../../../assets/img/edit.png" Title="Modificar">
+                        <img src="../../../assets/img/delete.svg" title="Eliminar" (click)="showModal(pokemon.name,pokemon.id)">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<app-delete-modal *ngIf="modalSW"></app-delete-modal>
