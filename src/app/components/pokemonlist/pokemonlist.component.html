@@ -5,7 +5,7 @@
             <input type="text" name="search" (keyup)="pokemonFilter($event)" class="form-control" placeholder="&#8981; Buscar">
         </div>
         <div>
-            <button type="button" class="btn"><span>+</span> Nuevo</button>
+            <button type="button" class="btn" (click)="postPokemon()"><span>+</span> Nuevo</button>
         </div>
     </div>
     <div id="list">
@@ -26,8 +26,8 @@
                     <td>{{ pokemon.attack }}</td>
                     <td>{{ pokemon.defense }}</td>
                     <td class="accion">
-                        <img src="../../../assets/img/edit.png" Title="Modificar">
-                        <img src="../../../assets/img/delete.svg" title="Eliminar" (click)="showModal(pokemon.name,pokemon.id)">
+                        <img src="../../../assets/img/edit.png" Title="Modificar" (click)="putPokemon(pokemon.id)">
+                        <img src="../../../assets/img/delete.svg" title="Eliminar" (click)="showModal(pokemon.name, pokemon.id)">
                     </td>
                 </tr>
             </tbody>

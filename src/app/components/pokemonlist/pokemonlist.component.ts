@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pokemon } from 'src/app/interfaces/pokemon';
 import { PokemonapiService, DeletemodalService } from 'src/app/services';
 
@@ -15,7 +16,7 @@ export class PokemonlistComponent implements OnInit {
   pokemonID: number = 0;
   pokemonName: string = '';
 
-  constructor(private pokemonService: PokemonapiService, private modalServ: DeletemodalService) { }
+  constructor(private pokemonService: PokemonapiService, private modalServ: DeletemodalService, private router: Router) { }
 
   ngOnInit(): void {
     this.getPokemons();
@@ -48,6 +49,14 @@ export class PokemonlistComponent implements OnInit {
     this.pokemonName = name;
 
     this.modalServ.$modal.emit(1);
+  }
+
+  postPokemon(){
+    this.router.navigateByUrl('new');
+  }
+
+  putPokemon(id: number){
+    this.router.navigateByUrl('pokemon/' + id);
   }
 
 }

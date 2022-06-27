@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="title"><h2>{{title}} Pokemon</h2></div>
+    <div class="rowimg">
+        <img src="{{pokemon.image}}" alt="">
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="">Nombre:</label>
+                <input type="text" [(ngModel)]="pokemon.name" class="form-control">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="">Ataque:</label>
+                <input type="range" [(ngModel)]="pokemon.attack" class="form-range" min="0" max="100" value="0">
+                <span>{{pokemon.attack}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="">Imagen:</label>
+                <input type="text" [(ngModel)]="pokemon.image" class="form-control">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="">Defensa:</label>
+                <input type="range" [(ngModel)]="pokemon.defense" class="form-range" min="0" max="100" value="0">
+                <span>{{pokemon.defense}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="">Tipo:</label>
+                <select [(ngModel)]="pokemon.type" class="form-select">
+                    <option *ngFor="let type of typeList" value="{{type}}">{{type}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="">HP:</label>
+                <input type="range" [(ngModel)]="pokemon.hp" class="form-range" min="0" max="100" value="0">
+                <span>{{pokemon.hp}}</span>
+            </div>
+        </div>
+    </div>
+    <div id="buttons">
+        <button type="button" class="btn btnsecond" (click)="cancel()">Cancelar</button>
+        <button type="button" class="btn" (click)="save()">Guardar</button>
+    </div>
+</div>
