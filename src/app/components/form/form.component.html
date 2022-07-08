@@ -1,7 +1,7 @@
 <div class="container">
     <div class="title"><h2>{{title}} Pokemon</h2></div>
     <div class="rowimg">
-        <img src="{{formPK.get('image')?.value}}" alt="">
+        <img src="{{formPK.get('image')?.value}}" onerror="this.src='assets/img/pokeball.png'" alt="">
     </div>
     <form [formGroup]="formPK" novalidate>
         <div class="row">
@@ -23,7 +23,7 @@
             <div class="col">
                 <div class="form-group">
                     <label for="">Imagen:</label>
-                    <input type="text" formControlName="image" class="form-control" required>
+                    <input type="text" formControlName="image" class="form-control" pattern='^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$' placeholder="URL"  required>
                 </div>
             </div>
             <div class="col">

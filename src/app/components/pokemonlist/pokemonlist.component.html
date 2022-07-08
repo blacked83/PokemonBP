@@ -21,7 +21,7 @@
                 <tr *ngFor="let pokemon of data">
                     <th>{{ pokemon.name }}</th>
                     <td>
-                        <img src="{{ pokemon.image }}" class="pokemonIMG">
+                        <img data-src="{{ pokemon.image }}" loading="lazy" onerror="this.src='assets/img/pokeball.png'" class="pokemonIMG">
                     </td>
                     <td>{{ pokemon.attack }}</td>
                     <td>{{ pokemon.defense }}</td>
