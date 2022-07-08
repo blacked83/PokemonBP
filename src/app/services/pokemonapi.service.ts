@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Pokemon, PokemonPost } from '../interfaces/pokemon';
+import { environment } from './../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonapiService {
 
-  apiURL: string = "https://bp-pokemons.herokuapp.com/";
+  apiURL: string = environment.apiURL;
   
   constructor(private http: HttpClient) { }
 
