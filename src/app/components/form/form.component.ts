@@ -86,7 +86,5 @@ export class FormComponent implements OnInit {
         idAuthor: res.id_author
       });
     });
-
-    
   }
 }
