@@ -75,14 +75,18 @@ export class FormComponent implements OnInit {
 
   getPokemon(id: number){
     this.pkServ.getPokemon(id).subscribe(res => {
-      this.formPK.get('id')?.setValue(res.id);
-      this.formPK.get('name')?.setValue(res.name);
-      this.formPK.get('image')?.setValue(res.image);
-      this.formPK.get('attack')?.setValue(res.attack);
-      this.formPK.get('defense')?.setValue(res.defense);
-      this.formPK.get('hp')?.setValue(res.hp);
-      this.formPK.get('type')?.setValue(res.type);
-      this.formPK.get('idAuthor')?.setValue(res.id_author);
+      this.formPK.patchValue({
+        id: res.id,
+        name: res.name,
+        type: res.type,
+        image: res.image,
+        attack: res.attack,
+        defense: res.defense,
+        hp: res.hp,
+        idAuthor: res.id_author
+      });
     });
+
+    
   }
 }
